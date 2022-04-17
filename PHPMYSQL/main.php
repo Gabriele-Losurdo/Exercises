@@ -82,31 +82,35 @@
                             E-mail: '.$row['email'].'<br>
                             Password: '.$row['pw'].'<br>'
                         ;
-                    }
-                    echo "------------------------------------------------------------------------------------------------------------------------";
-                    $sql = "SELECT * FROM utenti;";
-                    if($result = $connection -> query($sql)){
-                        if($result->num_rows > 0){
-                            echo '<table><thead>
-                            <tr>
-                            <th>Id</th>
-                            <th>Username</th>
-                            <th>E-mail</th>
-                            <th>Password</th>
-                            </tr></thead><tbody>
-                            ';
-                            while($row = $result->fetch_array()){
-                                echo '
+                        echo "------------------------------------------------------------------------------------------------------------------------";
+                        $sql = "SELECT * FROM utenti;";
+                        if($result = $connection -> query($sql)){
+                            if($result->num_rows > 0){
+                                echo '<table><thead>
                                 <tr>
-                                <td>'.$row['id'].'</td>
-                                <td>'.$row['username'].'</td>
-                                <td>'.$row['email'].'</td>
-                                <td>'.$row['pw'].'</td>
-                                </tr>
+                                <th>Id</th>
+                                <th>Username</th>
+                                <th>E-mail</th>
+                                <th>Password</th>
+                                </tr></thead><tbody>
                                 ';
+                                while($row = $result->fetch_array()){
+                                    echo '
+                                    <tr>
+                                    <td>'.$row['id'].'</td>
+                                    <td>'.$row['username'].'</td>
+                                    <td>'.$row['email'].'</td>
+                                    <td>'.$row['pw'].'</td>
+                                    </tr>
+                                    ';
+                                }
+                                echo '</tbody></table>';
                             }
-                            echo '</tbody></table>';
                         }
+                    }else{
+                        echo 'La password è sbagliata!<br>
+                        <a href="index.php?value=SignIn">Torna al pagina di Login!</a>
+                        ';
                     }
                 }else{
                     echo 'Non esiste nessun utente con questo username!<br>
