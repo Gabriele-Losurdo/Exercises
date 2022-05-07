@@ -50,7 +50,7 @@
                 echo "<style> body {background-color:grey;} </style>"; 
                 break;
             case "Friday":
-                echo "<style> body {background-color:blue;} </style>";    
+                echo "<style> body {background-color:blue;} </style>";
                 break;
             case "Saturday":
                 echo "<style> body {background-color:green;} </style>";    
