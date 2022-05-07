@@ -5,16 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
     <?php
-    /*
-    Scrivere una pagina che effettua l'inserimento del nome di un utente ("Come ti chiami?") 
-    e che scriva “buongiorno” quando l’orario attuale è anteriore o uguale alle 12,
-    “buon pomeriggio” quando è posteriore alle 12 ma anteriore alle 18 e “buonasera” altrimenti.
-    Aggiungere l’indicazione di data e ora attuali (ad esempio “Buongiorno Giovanni, oggi è il 20 Aprile 2009 e sono le ore ..).
-    Inoltre cambiare il colore di sfondo della pagina in base al giorno della settimana.
-    */
 
     if(!isset($_POST["invio"])){
         index();
@@ -38,10 +32,6 @@
 
         FINE;
     }
-    /*
-    echo date("H")."<br>";
-    echo date("l jS \of F Y H:i:s a");
-    */
 
     function hello(){
 
@@ -100,5 +90,7 @@
     }
 
     ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
