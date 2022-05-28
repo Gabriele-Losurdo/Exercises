@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function cac(){
+            var numero1 = document.getElementById("numero1").value;
+            var numero2 = document.getElementById("numero2").value;
+            var operazione = document.getElementById("operazione").value;
+            switch(operazione){
+                case "somma":
+                    var somma=numero1+numero2;
+                    document.getElementById("formattato").innerHTML=somma;
+                    break;
+                case "sottrazione":
+                    var sottrazione=numero1-numero2;
+                    document.getElementById("formattato").innerHTML=sottrazione;
+
+                    break;
+                case "prodotto":
+                    var prodotto=numero1*numero2;
+                    document.getElementById("formattato").innerHTML=prodotto;
+
+                break;
+                case "quoziente":
+                    var quoziente=numero1/numero2;
+                    document.getElementById("formattato").innerHTML=quoziente;
+
+                    break;
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Calcolatrice</h3>
+    <br>
+        1° Numero: <input type="number" id="numero1" required/><br>
+        2° Numero: <input type="number" id="numero2" required/><br>
+        <select>
+            <option value="somma" id="operazione">Somma</option>
+            <option value="sottrazione" id="operazione">Sottrazione</option>
+            <option value="prodotto" id="operazione">Prodotto</option>
+            <option value="quoziente" id="operazione">Quoziente</option>
+        </select>
+        <button type="submit" onclick="cac()">Invia</button>
+    <br>
+    <div style="border: 1px solid black;width:300px;height: 100px;">
+        <p id="formattato"></p>
+    </div>
+</body>
+</html>
