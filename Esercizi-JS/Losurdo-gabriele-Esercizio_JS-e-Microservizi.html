@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Losurdo-Gabriele_esercizio</title>
+</head>
+
+<script>
+
+    function chiamata()
+    {
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                
+                var risposta = this.responseText;
+
+                var rispostaJson = JSON.parse(risposta);
+
+                document.getElementById("idmessage").innerHTML = rispostaJson.id;
+
+                document.getElementById("contenutomessage").innerHTML = rispostaJson.contenuto;
+            }
+        };
+
+        xmlhttp.open("GET" , "http://localhost:8080/messaggio", true);
+
+        xmlhttp.send();
+
+    }
+
+</script>
+
+<body>
+    
+    <input type="button" value="Chiama il microservizio" onclick="chiamata()" />
+
+    <br>
+    <br>
+    <br>
+    <div style="border: 1px solid; height: 50px; width: 300px;" id="idmessage" ></div>
+    <div style="border: 1px solid; height: 50px; width: 300px;" id="contenutomessage" ></div>
+
+</body>
+</html>
