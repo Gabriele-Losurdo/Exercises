@@ -38,21 +38,12 @@
             $ndadi = (int)$_POST["ndadi"]; // questa variabile conterrà il numero di dadi che l'utente vuole lanciare
             $sommaP=0; // variabile che conterrà la somma totale dei punti
             $nc=0;
-
-            $im_dadi  = array(
-                1=>"dadi-200px/dado_1.png",
-                2=>"dadi-200px/dado_2.png",
-                3=>"dadi-200px/dado_3.png",
-                4=>"dadi-200px/dado_4.png",
-                5=>"dadi-200px/dado_5.png",
-                6=>"dadi-200px/dado_6.png"
-            );
             // con questo ciclo viene 'lanciato' un dado, verrà aggiunto il valore del dado alla variabile sommaP (somma totale dei punti)
             // e infine sarà data in output l'immagine del dado lanciato
             for($i=0;$i<$ndadi;$i++){
                 $nc=mt_rand(1,6);
                 $sommaP+=$nc;
-                echo '<img src='.$im_dadi[$nc].'>';
+                echo "<img src=\"dadi-200px/dado_".$nc.".png\">";
                 
             }
             // output dei punti effettuati con il lancio dei dadi
