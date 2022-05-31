@@ -21,6 +21,7 @@
         Gfiammiferi($numF,$U_C,$fTot);
     }
 
+    // funzione iniziale per poter iniziare il gioco
     function index(){
 
         echo <<< FINE
@@ -40,6 +41,7 @@
         }
 
         echo <<< FINE
+
         <form method="POST" action="">
             <strong>Quanti Fiammiferi prendi</strong><input type="number" name="Numf" min="1" max="3">
             <br>
@@ -47,21 +49,27 @@
             <input type="hidden" name="fTot" value="9">
             <input type="submit" name="invio" value="Invia"><br>
         </form>
+
         FINE;
 
-    }
+    }// fine funzione
 
+    // funzione per il gioco dei fiammiferi
     function Gfiammiferi($numF,$U_C=0,$fTot){
 
-        if($U_C==0){
+        if($U_C==0){// lato utente
+
             $fTot-=$numF;
+
             if($fTot==1){
-                echo "Ha vinto il computer!";
-                echo "<br><a href=\"\">Torna all'index</a>";
+                echo "Ha vinto il computer per aver lasciato l'ultimo fiammifero sul tavolo!";
+                echo "<br><a href=\"\">Inizia un'altra partita</a>";
             }else{
+
                 for($i=0;$i<$fTot;$i++){
                     echo "<img src=\"fiammifero.jpg\">";
                 }
+
                 echo "<br> Sono rimasti $fTot fiammiferi<br>";
     
                 echo <<< FINE
@@ -78,32 +86,36 @@
 
             }
             
-        }else{
+        }else{//lato computer
             $fTot-=$numF;
            
             if($fTot==1){
-                echo "Il computer ha perso! Hai vinto!";
-                echo "<br><a href=\"\">Torna all'index</a>";
 
-            }else{
+                echo "Il computer ha perso! Hai vinto!";
+                echo "<br><a href=\"\">Inizia un'altra partita</a>";
+
+            }else if($fTot>1){
                 
                 $nf_estratti = mt_rand(1,3);
             
-            
                 if(($fTot-=$nf_estratti)<=0){
-                    echo "<strong>Il computer ha perso per aver preso troppi fiammiferi! Ha vinto l'utente!</strong>";
-                    echo "<br><a href=\"\">Torna all'index</a>";
+
+                    echo "Il computer ha perso per aver preso tutti i fiammiferi del tavolo ( $nf_estratti )</strong>! Ha vinto l'utente!";
+                    echo "<br><a href=\"\">Inizia un'altra partita</a>";
+
                 }else{
+
                     echo "L'utente ha preso <strong>$numF</strong> fiammiferi<br><br>";
                     echo "Il computer ha preso <strong>$nf_estratti</strong> fiammiferi<br><br>";
                     echo "<br> Sono rimasti $fTot fiammiferi<br>";
+
                     for($i=0;$i<$fTot;$i++){
                         echo "<img src=\"fiammifero.jpg\">";
                     }
                     echo <<< FINE
         
                         <br><br>
-                        <strong>Clicca invia e inizia il tuo turno!</strong>
+                        <strong>Passa alla prossima fase!</strong>
                         <form method="POST" action="">
                             <br>
                             <input type="hidden" name="uc" value="0">
@@ -111,19 +123,22 @@
                             <input type="hidden" name="fTot" value="$fTot">
                             <input type="submit" name="invio" value="Invia"><br>
                         </form>
+
                     FINE;
                     
         
                 }
+
+            }else{
+
+                echo "Ha vinto il computer!";
+                echo "<br><a href=\"\">Inizia un'altra partita</a>";
+
             }
             
-            
-            
-            
-
         }
 
-    }
+    }// fine funzione
 
     ?>
 </body>
