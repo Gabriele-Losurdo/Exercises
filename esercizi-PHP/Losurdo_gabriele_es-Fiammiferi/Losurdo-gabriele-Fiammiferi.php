@@ -15,9 +15,9 @@
     if(!isset($_POST["invio"])){
         index();
     }else{
-        $numF = (int)$_POST["Numf"];
-        $fTot = (int)$_POST["fTot"];
-        $U_C = (int)$_POST["uc"];
+        $numF = $_POST["Numf"];// numero dei fiammiferi che l'utente ha preso
+        $fTot = $_POST["fTot"];// fiammiferi totali
+        $U_C = $_POST["uc"];// variabile per scandire i turni
         Gfiammiferi($numF,$U_C,$fTot);
     }
 
@@ -100,7 +100,7 @@
             
                 if(($fTot-=$nf_estratti)<=0){
 
-                    echo "Il computer ha perso per aver preso tutti i fiammiferi del tavolo ( $nf_estratti )</strong>! Ha vinto l'utente!";
+                    echo "Il computer ha perso per aver preso tutti i fiammiferi sul tavolo ( $nf_estratti )</strong>! Ha vinto l'utente!";
                     echo "<br><a href=\"\">Inizia un'altra partita</a>";
 
                 }else{
@@ -131,7 +131,7 @@
 
             }else{
 
-                echo "Ha vinto il computer!";
+                echo "Ha vinto il computer perchè hai preso troppi fiammiferi!";
                 echo "<br><a href=\"\">Inizia un'altra partita</a>";
 
             }
