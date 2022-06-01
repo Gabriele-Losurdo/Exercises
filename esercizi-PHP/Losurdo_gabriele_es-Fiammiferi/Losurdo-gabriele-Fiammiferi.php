@@ -66,7 +66,7 @@
                 echo "<br><a href=\"\">Inizia un'altra partita</a>";
             }else{
 
-                for($i=0;$i<$fTot;$i++){
+                for($i=0;$i<$fTot;$i++){// stampo fiammiferi
                     echo "<img src=\"fiammifero.jpg\">";
                 }
 
@@ -105,11 +105,11 @@
 
                 }else{
 
-                    echo "L'utente ha preso <strong>$numF</strong> fiammiferi<br><br>";
+                    echo "Hai preso <strong>$numF</strong> fiammiferi<br><br>";
                     echo "Il computer ha preso <strong>$nf_estratti</strong> fiammiferi<br><br>";
                     echo "<br> Sono rimasti $fTot fiammiferi<br>";
 
-                    for($i=0;$i<$fTot;$i++){
+                    for($i=0;$i<$fTot;$i++){// stampo fiammiferi
                         echo "<img src=\"fiammifero.jpg\">";
                     }
                     echo <<< FINE
