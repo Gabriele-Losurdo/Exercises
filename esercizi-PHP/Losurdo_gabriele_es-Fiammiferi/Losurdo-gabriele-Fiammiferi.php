@@ -43,7 +43,7 @@
         echo <<< FINE
 
         <form method="POST" action="">
-            <strong>Quanti Fiammiferi prendi</strong><input type="number" name="Numf" min="1" max="3">
+            <strong>Quanti Fiammiferi prendi</strong><input type="number" name="Numf" min="1" max="3" required>
             <br>
             <input type="hidden" name="uc" value="1">
             <input type="hidden" name="fTot" value="9">
@@ -76,7 +76,7 @@
                     <br>
                     <strong>Inserisci il numero di fiammiferi che vuoi prendere!( 1, 2 o 3)</strong>
                     <form method="POST" action="">
-                        <input type="number" name="Numf" min="1" max="3">
+                        <input type="number" name="Numf" min="1" max="3" required>
                         <br>
                         <input type="hidden" name="uc" value="1">
                         <input type="hidden" name="fTot" value="$fTot">
@@ -95,18 +95,41 @@
                 echo "<br><a href=\"\">Inizia un'altra partita</a>";
 
             }else if($fTot>1){
+                    
+                switch($fTot){
+                    case 8 :
+                        $nf = 3;
+                        break;
+                    case 7 :
+                        $nf = 2;
+                        break; 
+                    case 6 :
+                        $nf = 1;
+                        break;
+                    case 5 : // la casistica per il cinque non è necessaria
+                        $nf = 1;
+                        break; 
+                    case 4 :
+                        $nf = 3;
+                        break; 
+                    case 3 :
+                        $nf = 2;
+                        break; 
+                    case 2 :
+                        $nf = 1;
+                        break; 
+                }
                 
-                $nf_estratti = mt_rand(1,3);
             
-                if(($fTot-=$nf_estratti)<=0){
+                if(($fTot-=$nf)<=0){
 
-                    echo "Il computer ha perso per aver preso tutti i fiammiferi sul tavolo ( $nf_estratti )</strong>! Ha vinto l'utente!";
+                    echo "Il computer ha perso per aver preso tutti i fiammiferi sul tavolo ( $nf )</strong>! Ha vinto l'utente!";
                     echo "<br><a href=\"\">Inizia un'altra partita</a>";
 
                 }else{
 
                     echo "Hai preso <strong>$numF</strong> fiammiferi<br><br>";
-                    echo "Il computer ha preso <strong>$nf_estratti</strong> fiammiferi<br><br>";
+                    echo "Il computer ha preso <strong>$nf</strong> fiammiferi<br><br>";
                     echo "<br> Sono rimasti $fTot fiammiferi<br>";
 
                     for($i=0;$i<$fTot;$i++){// stampo fiammiferi
