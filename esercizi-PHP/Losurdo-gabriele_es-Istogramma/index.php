@@ -19,29 +19,30 @@
   function index(){
 
     echo <<< FINE
+    <center>
+      <h3>Istrogramma</h3>
 
-    <h3>Istrogramma</h3>
+      <form action="" method="POST">
 
-    <form action="" method="POST">
+        <label>Centro Commerciale:</label>
+        <input type="number" name="com" min="0" max="500" required><br>
 
-      <label>Centro Commerciale:</label>
-      <input type="number" name="com" min="0" max="500" required><br>
+        <label>Supermercato:</label>
+        <input type="number" name="sup" min="0" max="500" required><br>
 
-      <label>Supermercato:</label>
-      <input type="number" name="sup" min="0" max="500" required><br>
+        <label>Mercato:</label>
+        <input type="number" name="mer" min="0" max="500" required><br>
 
-      <label>Mercato:</label>
-      <input type="number" name="mer" min="0" max="500" required><br>
+        <label>Internet:</label>
+        <input type="number" name="int" min="0" max="500" required><br>
 
-      <label>Internet:</label>
-      <input type="number" name="int" min="0" max="500" required><br>
+        <label>Nessun posto in particolare:</label>
+        <input type="number" name="not" min="0" max="500" required><br>
 
-      <label>Nessun posto in particolare:</label>
-      <input type="number" name="not" min="0" max="500" required><br>
-
-      <input type="submit" name="invio" value="Invia">
-      <input type="reset" name="reset" value="reset">
-    </form>
+        <input type="submit" name="invio" value="Invia">
+        <input type="reset" name="reset" value="reset">
+      </form>
+    </center>
 
     FINE;
 
@@ -60,7 +61,7 @@
     if($somma > 500){
       
       echo "<h3>Impossibile visualizzare il grafico.</h3>";
-      echo "<a href=''>Torna all'inserimento dati.</a>";
+      echo "<a href=''>Inserisci altri dati</a>";
 
     }else{
 
@@ -72,7 +73,9 @@
 
       echo <<< FINE
 
-        <div class="bar-graph_container">
+        <center><h3>Ecco le preferenze degli intervistati:</h3></center>
+
+        <div class="bar-graph_container" style="margin: 0 auto;top: 30px;">
           <div class="bar-graph_levels">
             <span class="bar-graph_level">200+</span>
             <span class="bar-graph_level">200</span>
@@ -95,8 +98,12 @@
           </div>
         </div>
 
-    FINE;
+        <br><br><br><br><center><a href=''>Inserisci altri dati</a></center>
+
+      FINE;
+      
     }
+
 
     
 
