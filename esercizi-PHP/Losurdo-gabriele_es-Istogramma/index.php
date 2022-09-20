@@ -65,11 +65,11 @@
 
     }else{
 
-      $ccom_px = ($_POST["com"])."px";
-      $super_px = ($_POST["sup"])."px";
-      $mer_px = ($_POST["mer"])."px";
-      $int_px = ($_POST["int"])."px";
-      $not_px = ($_POST["not"])."px";
+      $ccom_px = ($_POST["com"]/2.7)."px";
+      $super_px = ($_POST["sup"]/2.7)."px";
+      $mer_px = ($_POST["mer"]/2.7)."px";
+      $int_px = ($_POST["int"]/2.7)."px";
+      $not_px = ($_POST["not"]/2.7)."px";
 
       echo <<< FINE
 
@@ -77,10 +77,10 @@
 
         <div class="bar-graph_container" style="margin: 0 auto;top: 30px;">
           <div class="bar-graph_levels">
-            <span class="bar-graph_level">200+</span>
-            <span class="bar-graph_level">200</span>
+            <span class="bar-graph_level">500</span>
+            <span class="bar-graph_level">300</span>
+            <span class="bar-graph_level">250</span>
             <span class="bar-graph_level">100</span>
-            <span class="bar-graph_level">50</span>
           </div>
           <div class="bar-graph_bars">
             <div class="bar-graph_bar pink" style="width:$ccom_px;"><div class="tooltip">$ccom</div></div>
