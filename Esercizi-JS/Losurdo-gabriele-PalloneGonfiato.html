@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var grand = 100;
+        
+        function refreshPage(){
+            window.location.reload();// refresh page
+        }
+
+        function check(){
+            if (grand>250){
+                document.getElementById("container").innerHTML = "<span id=\"esplosione\">&#128165;</span><br>"+
+                "<b>Il pallone è esploso!!!</b><br>"+
+                "<button onclick=\"refreshPage();\">Ricarica la pagina.</button>";// bottone per ricaricare la pagina
+                document.getElementById("esplosione").style.fontSize =  "100px";
+                document.getElementById("bottone1").style.display = "none";
+                document.getElementById("bottone2").style.display = "none";
+            }
+        }
+
+        function deafultPx(){
+            document.getElementById("pallone").style.fontSize = grand+"px";
+        }
+
+        function Ingrandisci(){
+            var pixel = grand + (grand*10)/100;
+            grand = pixel;
+            document.getElementById("pallone").style.fontSize = pixel +"px";
+            check();
+        }
+
+        function Rimpicciolisci(){
+            var pixel = grand - (grand*10)/100;
+            grand = pixel;
+            document.getElementById("pallone").style.fontSize = pixel +"px";
+            check();
+        }
+
+        window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette ArrowUp e ArrowDown
+            if ( e.key == "ArrowDown"){
+                Rimpicciolisci();
+            }else if ( e.key == "ArrowUp"){
+                Ingrandisci();
+            }
+        }, false);
+    </script>
+</head>
+<body>
+    <center>
+    <h1>Pallone gonfiato</h1>
+    <div id ="container">
+        <span id="pallone">&#9917;</span><br>
+        <button id="bottone1" onclick="Ingrandisci()" on>+</button>
+        <button id="bottone2" onclick="Rimpicciolisci()" onkeydown="Rimpicciolisci()">-</button></center>
+    </div>
+    <script>deafultPx();</script>
+</body>
+</html>
