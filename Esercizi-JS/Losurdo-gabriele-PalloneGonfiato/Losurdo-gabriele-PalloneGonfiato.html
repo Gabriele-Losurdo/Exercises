@@ -10,11 +10,13 @@
     <center>
     <h1>Pallone gonfiato</h1>
     <div id ="container">
-        <span id="pallone">&#9917;</span><br>
+        <p>Ingrandisci il pallone con "+" e rimpicciolisci con "-" .</p>
+        <p>Sposta il pallone con le freccette della tastiera!</p>
         <button id="botIn" onclick="Ingrandisci()" >+</button>
-        <button id="botOut" onclick="Rimpicciolisci()" >-</button>
+        <button id="botOut" onclick="Rimpicciolisci()" >-</button><br><br>
+        <p style="visibility:hidden;" id="error">Il pallone è troppo piccolo, gonfialo!</p>
+        <span style="position: relative;" id="pallone">&#9917;</span><br>
     </div>
-    <p style="visibility:hidden;" id="error">Il pallone è troppo piccolo, gonfialo!</p>
     </center>
     <script src="instruction.js"></script>
 </body>

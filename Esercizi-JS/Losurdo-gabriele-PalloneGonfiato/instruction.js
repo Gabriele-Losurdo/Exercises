@@ -1,4 +1,6 @@
 var grand = 100;
+var pallone = document.getElementById("pallone");
+var errore = document.getElementById("error");
 
 document.getElementById("pallone").style.fontSize = grand+"px";
 
@@ -34,9 +36,35 @@ function Rimpicciolisci(){
 }
 
 window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette ArrowUp e ArrowDown
-    if ( e.key == "ArrowDown"){
+    if ( e.key == "-"){
         Rimpicciolisci();
-    }else if ( e.key == "ArrowUp"){
+    }else if ( e.key == "+"){
         Ingrandisci();
     }
+}, false);
+
+// moving the ball
+
+var x = 0;
+var y = 0;
+
+var windowWidth;
+
+window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette ArrowUp e ArrowDown
+    windowWidth = window.innerWidth; // mi ricavo la larghezza della finestra
+    if ( e.key == "ArrowUp"){
+        if ( y > 0){
+            y -= 10;
+        }
+    }else if ( e.key == "ArrowDown"){
+        y += 10;
+    }else if ( e.key == "ArrowLeft"){
+        if ( x > -(windowWidth/2.2) ) {
+            x -= 10;        
+        }
+    }else if ( e.key == "ArrowRight"){
+        x +=10;
+    }
+    pallone.style.top = y + "px"; 
+    pallone.style.left = x + "px"; 
 }, false);
