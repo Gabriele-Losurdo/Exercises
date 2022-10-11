@@ -73,11 +73,11 @@ window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco
 pallone.addEventListener('mouseover', function() {
     casual = Math.random();
     if ( casual > 0.5 ){
-        x = Math.random() * 300;
+        x = (windowWidth/2.2) * Math.random();
     }else{
-        x = Math.random() * -300;
+        x = (-windowWidth/2.2) * Math.random(); 
     }
-    y = Math.random() * 300;
-    pallone.style.top = y + "px"; 
+    y = (windowHeight/2.2) * Math.random();
     pallone.style.left = x + "px"; 
+    pallone.style.top = y + "px"; 
 });
