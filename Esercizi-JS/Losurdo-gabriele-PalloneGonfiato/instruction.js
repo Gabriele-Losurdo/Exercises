@@ -47,8 +47,9 @@ window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco
 
 var x = 0;
 var y = 0;
-
+var casual;
 var windowWidth;
+var windowHeight = window.innerHeight;
 
 window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette ArrowUp e ArrowDown
     windowWidth = window.innerWidth; // mi ricavo la larghezza della finestra
@@ -68,3 +69,15 @@ window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco
     pallone.style.top = y + "px"; 
     pallone.style.left = x + "px"; 
 }, false);
+
+pallone.addEventListener('mouseover', function() {
+    casual = Math.random();
+    if ( casual > 0.5 ){
+        x = Math.random() * 300;
+    }else{
+        x = Math.random() * -300;
+    }
+    y = Math.random() * 300;
+    pallone.style.top = y + "px"; 
+    pallone.style.left = x + "px"; 
+});
