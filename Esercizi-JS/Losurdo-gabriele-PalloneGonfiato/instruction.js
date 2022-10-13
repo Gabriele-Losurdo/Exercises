@@ -8,7 +8,11 @@ function refreshPage(){
     window.location.reload();// refresh page
 }
 
-function check(){
+function generateRandom(max){ // generatore casuale di numeri
+    return Math.floor(Math.random()*max);
+}
+
+function check(){ // controllo grandezza del pallone ed eventualmente sostituire l'emoji
     if (grand>250){
         document.getElementById("container").innerHTML = "<span id=\"esplosione\">&#128165;</span><br>"+
         "<b>Il pallone è esploso!!!</b><br>"+
@@ -17,7 +21,7 @@ function check(){
     }
 }
 
-function Ingrandisci(){
+function Ingrandisci(){ // funzione per l'ingrandimento dell'emoji pallone 
     var pixel = grand + (grand*10)/100;
     grand = pixel;
     document.getElementById("pallone").style.fontSize = pixel +"px";
@@ -25,7 +29,7 @@ function Ingrandisci(){
     check();
 }
 
-function Rimpicciolisci(){
+function Rimpicciolisci(){ // funzione per rimpicciolire dell'emoji pallone 
     var pixel = grand - (grand*10)/100;
     if (grand >=50) {
         grand = pixel;
@@ -35,7 +39,7 @@ function Rimpicciolisci(){
     }
 }
 
-window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette ArrowUp e ArrowDown
+window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette + e -
     if ( e.key == "-"){
         Rimpicciolisci();
     }else if ( e.key == "+"){
@@ -48,8 +52,8 @@ window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco
 var x = 0;
 var y = 0;
 var casual;
-var windowWidth;
-var windowHeight = window.innerHeight;
+var windowWidth = window.innerWidth; // larghezza finestra
+var windowHeight = window.innerHeight; // altezza finestra
 
 window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco il pallone usando le freccette ArrowUp e ArrowDown
     windowWidth = window.innerWidth; // mi ricavo la larghezza della finestra
@@ -70,14 +74,28 @@ window.addEventListener('keydown', function (e) { // rimpicciolisco e ingradisco
     pallone.style.left = x + "px"; 
 }, false);
 
-pallone.addEventListener('mouseover', function() {
-    casual = Math.random();
-    if ( casual > 0.5 ){
-        x = (windowWidth/2.2) * Math.random();
-    }else{
-        x = (-windowWidth/2.2) * Math.random(); 
-    }
-    y = (windowHeight/2.2) * Math.random();
-    pallone.style.left = x + "px"; 
-    pallone.style.top = y + "px"; 
+pallone.addEventListener('mouseover', function() { // evento per la vibrazione e il 'balzo' dell'emoji pallone
+    var id=null;
+
+    id = setInterval(() => { // vibrazione
+        x -= 10;    // sinistra
+        pallone.style.left = x + "px"; 
+        setTimeout(() => {
+            x += 10; // destra
+            pallone.style.left = x + "px"; 
+        }, 1);
+    }, 2);
+    
+    setTimeout(() => { // balzo
+        casual = Math.random();
+        if ( casual > 0.5 ){
+            x = generateRandom(windowWidth/2.2);
+        }else{
+            x = generateRandom(-windowWidth/2.2); 
+        }
+        y = generateRandom(windowHeight/2.2);
+        pallone.style.left = x + "px"; 
+        pallone.style.top = y + "px";    
+        clearInterval(id);
+    }, 1000);
 });
