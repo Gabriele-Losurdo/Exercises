@@ -84,7 +84,7 @@ pallone.addEventListener('mouseover', function() { // evento per la vibrazione e
             x += 10; // destra
             pallone.style.left = x + "px"; 
         }, 1);
-    }, 2);
+    }, 5);
     
     setTimeout(() => { // balzo
         casual = Math.random();
