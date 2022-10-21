@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+
+<body>
+    <center>
+        <h1>QR Code Generator</h1>
+
+        <br> Inserisci il testo da codificare:<br>
+        <input type="text" id="testo" value="Hello, World!">
+
+        <br><br> Scegli la grandezza del QR CODE:<br>
+        <select id="size">
+            <option value="100" selected>100 pixel</option>
+            <option value="200">200 pixel</option>
+            <option value="300">300 pixel</option>
+        </select>
+
+        <br><br> Decidi il colore del QR Code nel formato esadecimale 000000:
+        <br><input type="text" maxlength="6" id="color" value="FFFFFF">
+
+        <br><br> Decidi il colore dello sfondo QR Code nel formato esadecimale:
+        <br><input type="text" maxlength="6" id="bgcolor" value="000000">
+
+        <br><br>
+
+        <button id="genQR">Genera il tuo QR Code</button>
+
+        <br><br>
+
+        <div id="immagine">
+
+        </div>
+
+    </center>
+    <script src="instruction.js"></script>
+</body>
+
+</html>
