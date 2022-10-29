@@ -9,12 +9,23 @@ find.addEventListener('click', function() {
     request.send();
 
     request.onload = function() {
-        const citta = request.response;
+        let citta = request.response;
         let options;
-        for (var result in citta.results) {
-            options += "<option>" + result[1] + "</option>";
+        for (let i = 0; i < 5; i++) {
+            if ( (citta.results[i].country) == "Italy"){
+                options += 
+                    "<div class='card' style='width: 18rem;'>" +
+                        "<div class='card-header'>" +
+                            citta.results[i].name +
+                        "</div>" +
+                        "<ul class='list-group list-group-flush'>" +
+                            "<li class='list-group-item'>" + citta.results[i].longitude + "</li>" +
+                            "<li class='list-group-item'>" + citta.results[i].latitude + "</li>" +
+                            "<li class='list-group-item'>" + citta.results[i].population + "</li>" +
+                        "</ul>" +
+                    "</div>";
+            }
         }
         document.getElementById("city").innerHTML = options;
     }
-
 });
