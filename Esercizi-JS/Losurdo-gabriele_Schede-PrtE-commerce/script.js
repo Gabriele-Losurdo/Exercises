@@ -15,7 +15,7 @@ find.addEventListener('click', function() {
             document.getElementById("product-description").innerHTML = "Descrizione: " + prodotti.products[i].description;
             document.getElementById("product-price").innerHTML = "Prezzo: " + prodotti.products[i].price;
             document.getElementById("product-category").innerHTML = "Categoria: " + prodotti.products[i].category;
-            document.getElementById("Image").innerHTML = "<img src='" + prodotti.products[i].images[0] + "'/>";
+            document.getElementById("Image").innerHTML = "<img src='" + prodotti.products[i].images[0] + "' style='height:18rem; width:18rem;'/>";
         }
     }
 });
