@@ -11,11 +11,11 @@ find.addEventListener('click', function() {
     request.onload = function() {
         let citta = request.response;
         for (let i = 0; i < 100; i++) {
-            if (citta.results[i].country == "Italy") {
-                document.getElementById("longitude").innerHTML = "Longitudine: " + citta.results[i].longitude;
-                document.getElementById("latitude").innerHTML = "Latitudine: " + citta.results[i].latitude;
-                document.getElementById("elevation").innerHTML = "Elevazione:" + citta.results[i].elevation;
-                document.getElementById("popolation").innerHTML = "Popolazione:" + citta.results[i].population;
+            if (citta.results[i].admin1 == "Apulia") {
+                document.getElementById("longitude").innerHTML = citta.results[i].longitude;
+                document.getElementById("latitude").innerHTML = citta.results[i].latitude;
+                document.getElementById("elevation").innerHTML = citta.results[i].elevation;
+                document.getElementById("popolation").innerHTML = citta.results[i].population;
                 break;
             }
         }
