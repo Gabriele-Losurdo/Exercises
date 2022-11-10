@@ -10,12 +10,10 @@ find.addEventListener('click', function() {
 
     request.onload = function() {
         let prodotti = request.response;
-        for (let i = 0; i < 100; i++) {
-            document.getElementById("product-title").innerHTML = prodotti.products[i].title;
-            document.getElementById("product-description").innerHTML = "Descrizione: " + prodotti.products[i].description;
-            document.getElementById("product-price").innerHTML = "Prezzo: " + prodotti.products[i].price;
-            document.getElementById("product-category").innerHTML = "Categoria: " + prodotti.products[i].category;
-            document.getElementById("Image").innerHTML = "<img src='" + prodotti.products[i].images[0] + "' style='height:18rem; width:18rem;'/>";
-        }
+        document.getElementById("product-title").innerHTML = prodotti.products[0].title;
+        document.getElementById("product-description").innerHTML = prodotti.products[0].description;
+        document.getElementById("product-price").innerHTML = prodotti.products[0].price;
+        document.getElementById("product-category").innerHTML = prodotti.products[0].category;
+        document.getElementById("Image").innerHTML = "<img src='" + prodotti.products[0].images[0] + "' style='height:18rem; width:18rem;'/>";
     }
 });
