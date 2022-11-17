@@ -26,11 +26,11 @@
 
         <form action="" method="POST">
 
-            1° numero : <input type="number" name="num_giocati[]"><br><br>
-            2° numero : <input type="number" name="num_giocati[]"><br><br>
-            3° numero : <input type="number" name="num_giocati[]"><br><br>
-            4° numero : <input type="number" name="num_giocati[]"><br><br>
-            5° numero : <input type="number" name="num_giocati[]">
+            1° numero : <input type="number" min="0" max="90" name="num_giocati[]"><br><br>
+            2° numero : <input type="number" min="0" max="90" name="num_giocati[]"><br><br>
+            3° numero : <input type="number" min="0" max="90" name="num_giocati[]"><br><br>
+            4° numero : <input type="number" min="0" max="90" name="num_giocati[]"><br><br>
+            5° numero : <input type="number" min="0" max="90" name="num_giocati[]">
             <br><br>
             <input type="submit" name="invio" value="Invia i numeri che vuoi giocare!">
 
