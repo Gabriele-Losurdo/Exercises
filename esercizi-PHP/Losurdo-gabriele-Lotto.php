@@ -137,7 +137,7 @@
         $numeri_giocati=$_POST["num_giocati"];
         $vittoria = 0;
         for($i=0;$i<10;$i++){
-            echo "<h2>Estrazione n. " . $i+1 . " :</h2>";
+            echo "<h2>Estrazione n. " . ($i+1) . " :</h2>";
             numeri_vincenti($numeri_giocati);
         }
     }
