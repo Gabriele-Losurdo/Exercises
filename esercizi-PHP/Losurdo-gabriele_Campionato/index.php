@@ -13,66 +13,108 @@
 <body style="background-color:#105469">
 <div class="main">
 <font face="Comic sans MS" class="color" size="10">CLASSIFICA CAMPIONATO</font>
+<?php
+    session_start();
+    if(!isset($_POST["Invio"])){
+        $classifica=array();                  // Crea l'array vuoto
+        $_SESSION["classifica"] = $classifica;
+        if(isset($_POST["Modifica"])){
+            modifica();
+        }else{
+            index();
+        }
+    }else{
+        index();
+    }
 
-<form method="POST">
-    <div class="dati" >
+    function index(){
+        $classifica[] = $_SESSION["classifica"]; // recupera l'array salvato
+        $nome = $_POST["Name"];
+        $vitt = $_POST["Vittorie"];
+        $sconf = $_POST["Sconfitte"];
+        $par = $_POST["Pareggi"];
+        $punti = $_POST["Punti"];
+        $classifica[] = array(
+            "Name" => $nome,
+            "Vittorie" => $vitt,
+            "Sconfitte" => $sconf,
+            "Pareggi" => $par,
+            "Punti" => $punti
+        );
+        $_SESSION["classifica"] = $classifica;
+
+        echo <<< END
         
-        <div class="mb-3">
-            <label  class="form-label">Nome squadra: </label>
-            <input type="text" class="form-control" name="Name">
+        <form method="POST">
+            <div class="dati" >
+                
+                <div class="mb-3">
+                    <label  class="form-label">Nome squadra: </label>
+                    <input type="text" class="form-control" name="Name">
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Vittorie: </label>
+                    <input type="text" class="form-control" name="Vittorie">
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Sconfitte: </label>
+                    <input type="text" class="form-control" name="Sconfitte">
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Pareggi: </label>
+                    <input type="text" class="form-control" name="Pareggi">
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Punti classifica: </label>
+                    <input type="text" class="form-control" name="Punti">
+                </div>
+        
+          </div>
+        
+          <button type="submit" class="btn btn-primary" name="Invio">Invia</button> 
+          <button type="reset" class="btn btn-primary" name="Cancella">Elimina</button>
+        
+        </form>
+        
         </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Squadra
+              <th>Vittore
+              <th>Pareggi
+              <th>Sconfitte
+              <th>Punti
+              <th>Modifica
+          </thead>
+          <tbody>
+            <tr>
+        END;
+        for($i=0;$i<count($classifica);$i++){
+            foreach($classifica as $key=>$value){
+        
+            echo <<< END
+                <td>$value
+            END;
+            }
+                
+                echo ' <td><form method="POST"><button type="submit" class="btn btn-success" name="Modifica">Invia</button></form>';
+        }
+        echo <<< END
+          </tbody>
+        </table>
+        END;
+    }
 
-        <div class="mb-3">
-            <label class="form-label">Vittorie: </label>
-            <input type="text" class="form-control" name="Vittorie">
-        </div>
+    function modifica(){
+        
+    }
+?>
 
-        <div class="mb-3">
-            <label class="form-label">Sconfitte: </label>
-            <input type="text" class="form-control" name="Sconfitte">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Pareggi: </label>
-            <input type="text" class="form-control" name="Pareggi">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Punti classifica: </label>
-            <input type="text" class="form-control" name="Punti">
-        </div>
-
-  </div>
-
-  <button type="submit" class="btn btn-primary" name="Invio">Invia</button> 
-  <button type="reset" class="btn btn-primary" name="Cancella">Elimina</button>
-
-</form>
-
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>ID
-      <th>Squadra
-      <th>Vittore
-      <th>Pareggi
-      <th>Sconfitte
-      <th>Punti
-      <th>Modifica
-  </thead>
-  <tbody>
-    <tr>
-      <td>1
-      <td>Malcolm
-      <td>Reynolds
-      <td>Mal, Cap'n
-      <td>M
-      <td>
-      <td><button type="submit" class="btn btn-success" name="Invio">Invia</button>
-    
-  </tbody>
-</table>
 
 </body>
 
