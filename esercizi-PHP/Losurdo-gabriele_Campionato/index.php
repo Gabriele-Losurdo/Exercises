@@ -20,11 +20,14 @@
         $_SESSION["classifica"] = $classifica;
         if(isset($_POST["Modifica"])){
             modifica();
+        }else if(isset($_POST["Change"])){
+            change();
+            index();
         }else{
             index();
         }
     }else{
-        $classifica[] = $_SESSION["classifica"]; // recupera l'array salvato
+        $classifica = $_SESSION["classifica"]; // recupera l'array salvato
         $classifica[] = array(
             "Name" => $_POST["Name"],
             "Vittorie" => $_POST["Vittorie"],
@@ -37,35 +40,36 @@
     }
 
     function index(){
-        $classifica[] = $_SESSION["classifica"]; // recupera l'array salvato
+        $classifica = $_SESSION["classifica"]; // recupera l'array salvato
+       
         echo <<< END
         
-        <form action="" method="POST">
+        </pre><form method="POST">
             <div class="dati" >
                 
                 <div class="mb-3">
                     <label  class="form-label">Nome squadra: </label>
-                    <input type="text" class="form-control" name="Name">
+                    <input type="text" class="form-control" name="Name" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Vittorie: </label>
-                    <input type="number" class="form-control" name="Vittorie">
+                    <input type="number" class="form-control" name="Vittorie" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Sconfitte: </label>
-                    <input type="number" class="form-control" name="Sconfitte">
+                    <input type="number" class="form-control" name="Sconfitte" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Pareggi: </label>
-                    <input type="number" class="form-control" name="Pareggi">
+                    <input type="number" class="form-control" name="Pareggi" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Punti classifica: </label>
-                    <input type="number" class="form-control" name="Punti">
+                    <input type="number" class="form-control" name="Punti" required>
                 </div>
         
           </div>
@@ -79,25 +83,29 @@
         <table>
           <thead>
             <tr>
-              <th>Squadra
-              <th>Vittorie
-              <th>Pareggi
-              <th>Sconfitte
-              <th>Punti
-              <th>Modifica
+              <th>Squadra</th>
+              <th>Vittore</th>
+              <th>Pareggi</th>
+              <th>Sconfitte</th>
+              <th>Punti</th>
+              <th>Modifica</th>
+              </tr>
           </thead>
           <tbody>
+            <tr>
         END;
+
         for($i=0;$i<count($classifica);$i++){
-            echo "<tr>";
             foreach($classifica[$i] as $key=>$value){
-        
-                echo "<td>$value";
-        
+                echo <<< END
+                    <td>$value</td>
+                END;
             }
                 
-            echo ' <td><form action="" method="POST"><button type="submit" class="btn btn-success" name="Modifica">Invia</button>'.
-                     ' <input type="number" name="indice" value="$i" style="display:none;"></form>';
+                echo <<< END
+                    <td><form method="POST"><button type="submit" class="btn btn-success" name="Modifica">Invia</button>
+                    <input type="number" value="$i" name="indice" style="display:none;"></form></td></tr>
+                END;
         }
         echo <<< END
           </tbody>
@@ -106,7 +114,58 @@
     }
 
     function modifica(){
+        $indice = $_POST['indice'];
+        echo <<< END
+        <form method="POST">
+            <div class="dati" >
+                
+                <div class="mb-3">
+                    <label  class="form-label">Nome squadra: </label>
+                    <input type="text" class="form-control" name="Name" required>
+                </div>
         
+                <div class="mb-3">
+                    <label class="form-label">Vittorie: </label>
+                    <input type="text" class="form-control" name="Vittorie" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Sconfitte: </label>
+                    <input type="text" class="form-control" name="Sconfitte" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Pareggi: </label>
+                    <input type="text" class="form-control" name="Pareggi" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label class="form-label">Punti classifica: </label>
+                    <input type="text" class="form-control" name="Punti" required>
+                </div>
+
+                <input type="number" value="$indice" name="indice" style="display:none;">
+        
+        </div>
+        
+        <button type="submit" class="btn btn-primary" name="Change">Invia</button> 
+        <button type="reset" class="btn btn-primary" name="Cancella">Elimina</button>
+        
+        </form>
+        END;
+    }
+
+    function change(){
+        $indice = $_POST['indice'];
+        $classifica = $_SESSION["classifica"]; // recupera l'array salvato
+        $classifica[$indice] = array(
+            "Name" => $_POST["Name"],
+            "Vittorie" => $_POST["Vittorie"],
+            "Sconfitte" => $_POST["Sconfitte"],
+            "Pareggi" => $_POST["Pareggi"],
+            "Punti" => $_POST["Punti"]
+        );
+        $_SESSION["classifica"] = $classifica;
     }
 ?>
 
