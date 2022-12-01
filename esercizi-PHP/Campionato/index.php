@@ -57,22 +57,22 @@
         
                 <div class="mb-3">
                     <label class="form-label">Vittorie: </label>
-                    <input type="number" class="form-control" name="Vittorie" required>
+                    <input type="number" class="form-control" min="0" name="Vittorie" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Sconfitte: </label>
-                    <input type="number" class="form-control" name="Sconfitte" required>
+                    <input type="number" class="form-control" min="0" name="Sconfitte" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Pareggi: </label>
-                    <input type="number" class="form-control" name="Pareggi" required>
+                    <input type="number" class="form-control" min="0" name="Pareggi" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Punti classifica: </label>
-                    <input type="number" class="form-control" name="Punti" required>
+                    <input type="number" class="form-control" min="0" name="Punti" required>
                 </div>
         
           </div>
@@ -136,22 +136,22 @@
         
                 <div class="mb-3">
                     <label class="form-label">Vittorie: </label>
-                    <input type="number" class="form-control" placeholder="$vittorie" name="Vittorie" required>
+                    <input type="number" class="form-control" placeholder="$vittorie" min="0" name="Vittorie" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Sconfitte: </label>
-                    <input type="number" class="form-control" placeholder="$scofitte" name="Sconfitte" required>
+                    <input type="number" class="form-control" placeholder="$scofitte" min="0" name="Sconfitte" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Pareggi: </label>
-                    <input type="number" class="form-control" placeholder="$pareggi" name="Pareggi" required>
+                    <input type="number" class="form-control" placeholder="$pareggi" min="0" name="Pareggi" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Punti classifica: </label>
-                    <input type="number" class="form-control" placeholder="$punti" name="Punti" required>
+                    <input type="number" class="form-control" placeholder="$punti" min="0" name="Punti" required>
                 </div>
 
                 <input type="number" value="$indice" name="indice" style="display:none;">
