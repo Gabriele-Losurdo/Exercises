@@ -14,31 +14,32 @@
 <div class="main">
 <font face="Comic sans MS" class="color" size="10">CLASSIFICA CAMPIONATO</font>
 <?php
-    session_start();
+    session_start(); // apro la sessione
+
     if(!isset($_POST["Invio"])){
-        if(isset($_POST["Modifica"])){
+        if(isset($_POST["Modifica"])){ // quando sping il bottone Mod
             modifica();
-        }else if(isset($_POST["Change"])){
+        }else if(isset($_POST["Change"])){ // quando modifico e salvo le modifiche della squadra
             ordina();
             change();
             index();
-        }else{
+        }else{ // viene eseguita solo la prima volta
             $classifica=array();                  // Crea l'array vuoto
             $_SESSION["classifica"] = $classifica;
             index();
         }
-    }else{
+    }else{ // viene eseguito ogni volta che viene aggiunta una squdra
         $classifica = $_SESSION["classifica"]; // recupera l'array salvato
-        $classifica[] = array(
+        $classifica[] = array( // aggiungo nell'array classifica un array associativo con i varie chiavi e valori inviati nel form
             "Name" => $_POST["Name"],
             "Vittorie" => $_POST["Vittorie"],
             "Sconfitte" => $_POST["Sconfitte"],
             "Pareggi" => $_POST["Pareggi"],
             "Punti" => $_POST["Punti"]
         );
-        $_SESSION["classifica"] = $classifica;
-        ordina();
-        index();
+        $_SESSION["classifica"] = $classifica; // aggiorno la variabile di sessione
+        ordina(); // ordino la classifica
+        index(); // mostro il form e la tabella aggiornata
     }
 
     function index(){
@@ -46,7 +47,7 @@
        
         echo <<< END
         
-        </pre><form method="POST">
+        <form method="POST">
             <div class="dati" >
                 
                 <div class="mb-3">
@@ -105,7 +106,7 @@
             }
                 
                 echo <<< END
-                    <td><form method="POST"><button type="submit" class="btn btn-success" name="Modifica">Invia</button>
+                    <td><form method="POST"><button type="submit" class="btn btn-success" name="Modifica">Mod</button>
                     <input type="number" value="$i" name="indice" style="display:none;"></form></td></tr>
                 END;
         }
@@ -157,14 +158,14 @@
         
         </div>
         
-        <button type="submit" class="btn btn-primary" name="Change">Invia</button> 
+        <button type="submit" class="btn btn-primary" name="Change">Salva le modifiche</button> 
         <button type="reset" class="btn btn-primary" name="Cancella">Elimina</button>
         
         </form>
         END;
     }
 
-    function change(){
+    function change(){ // modifica la squadra scelta dall'utente con i vari valori inseriti nel form
         $indice = $_POST['indice'];
         $classifica = $_SESSION["classifica"]; // recupera l'array salvato
         $classifica[$indice] = array(
@@ -174,10 +175,10 @@
             "Pareggi" => $_POST["Pareggi"],
             "Punti" => $_POST["Punti"]
         );
-        $_SESSION["classifica"] = $classifica;
+        $_SESSION["classifica"] = $classifica; // aggiorno la variabile di sessione con la classifica aggiornata
     }
 
-    function ordina(){
+    function ordina(){ // funzione per ordinare le squadre inserite tramite il Bubble sort
         $classifica = $_SESSION["classifica"]; // recupera l'array salvato
         for($i=0;$i<count($classifica);$i++){
             $squadra1 = $classifica[$i];
@@ -189,7 +190,7 @@
                 }
             }
         }
-        $_SESSION["classifica"] = $classifica;
+        $_SESSION["classifica"] = $classifica; // aggiorno la variabile di sessione con la classifica ordinata
     }
 ?>
 
