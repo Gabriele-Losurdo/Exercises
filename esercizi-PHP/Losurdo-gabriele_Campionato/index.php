@@ -16,14 +16,15 @@
 <?php
     session_start();
     if(!isset($_POST["Invio"])){
-        $classifica=array();                  // Crea l'array vuoto
-        $_SESSION["classifica"] = $classifica;
         if(isset($_POST["Modifica"])){
             modifica();
         }else if(isset($_POST["Change"])){
+            ordina();
             change();
             index();
         }else{
+            $classifica=array();                  // Crea l'array vuoto
+            $_SESSION["classifica"] = $classifica;
             index();
         }
     }else{
@@ -36,6 +37,7 @@
             "Punti" => $_POST["Punti"]
         );
         $_SESSION["classifica"] = $classifica;
+        ordina();
         index();
     }
 
@@ -115,33 +117,40 @@
 
     function modifica(){
         $indice = $_POST['indice'];
+        $classifica = $_SESSION["classifica"]; // recupera l'array salvato
+        $squadra = $classifica[$indice];
+        $nome = $squadra["Name"];
+        $vittorie = $squadra["Vittorie"];
+        $scofitte = $squadra["Sconfitte"];
+        $pareggi = $squadra["Pareggi"];
+        $punti = $squadra["Punti"];
         echo <<< END
         <form method="POST">
             <div class="dati" >
                 
                 <div class="mb-3">
                     <label  class="form-label">Nome squadra: </label>
-                    <input type="text" class="form-control" name="Name" required>
+                    <input type="text" class="form-control" placeholder="$nome" name="Name" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Vittorie: </label>
-                    <input type="text" class="form-control" name="Vittorie" required>
+                    <input type="number" class="form-control" placeholder="$vittorie" name="Vittorie" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Sconfitte: </label>
-                    <input type="text" class="form-control" name="Sconfitte" required>
+                    <input type="number" class="form-control" placeholder="$scofitte" name="Sconfitte" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Pareggi: </label>
-                    <input type="text" class="form-control" name="Pareggi" required>
+                    <input type="number" class="form-control" placeholder="$pareggi" name="Pareggi" required>
                 </div>
         
                 <div class="mb-3">
                     <label class="form-label">Punti classifica: </label>
-                    <input type="text" class="form-control" name="Punti" required>
+                    <input type="number" class="form-control" placeholder="$punti" name="Punti" required>
                 </div>
 
                 <input type="number" value="$indice" name="indice" style="display:none;">
@@ -165,6 +174,21 @@
             "Pareggi" => $_POST["Pareggi"],
             "Punti" => $_POST["Punti"]
         );
+        $_SESSION["classifica"] = $classifica;
+    }
+
+    function ordina(){
+        $classifica = $_SESSION["classifica"]; // recupera l'array salvato
+        for($i=0;$i<count($classifica);$i++){
+            $squadra1 = $classifica[$i];
+            for($j=$i+1;$j<count($classifica);$j++){
+                $squadra2 = $classifica[$j];
+                if($squadra2["Punti"] > $squadra1["Punti"]){
+                    $classifica[$j] = $squadra1;
+                    $classifica[$i] = $squadra2; 
+                }
+            }
+        }
         $_SESSION["classifica"] = $classifica;
     }
 ?>
