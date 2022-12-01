@@ -20,8 +20,8 @@
         if(isset($_POST["Modifica"])){ // quando sping il bottone Mod
             modifica();
         }else if(isset($_POST["Change"])){ // quando modifico e salvo le modifiche della squadra
-            ordina();
             change();
+            ordina();
             index();
         }else{ // viene eseguita solo la prima volta
             $classifica=array();                  // Crea l'array vuoto
