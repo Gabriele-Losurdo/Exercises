@@ -1,5 +1,6 @@
 <?php $menu = $_SESSION["menu"]; ?>
 <div class="caricamento">
+    <h2>Aggiungi un nuovo prodotto</h2>
     <?php if(count($menu) != 0){ ?>
         <table class="table table-success table-striped-columns">
                 <tr  class="table-success">
@@ -17,7 +18,6 @@
                     <?php } ?>
                     </tr>
                 <?php } ?>
-            </table>
         </table>
     <?php }else{ ?>
         <div class="alert alert-danger" role="alert">
