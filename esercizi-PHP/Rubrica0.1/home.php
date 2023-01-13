@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="Pages/pngegg.png" alt="" width="60" height="60">
+            <img src="pages/pngegg.png" alt="" width="60" height="60">
         </a>
             <a class="navbar-brand" href="#"><h2>Rubrica</h2></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,4 +1,4 @@
-<?php $menu = $_SESSION["Rubrica"]; ?>
+<?php $Rubrica = $_SESSION["Rubrica"]; ?>
 <div class="Contatto">
     <h2>Aggiungi un nuovo contatto</h2>
         <div class="alert alert-danger" role="alert">
