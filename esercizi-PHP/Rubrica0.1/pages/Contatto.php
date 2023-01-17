@@ -2,7 +2,7 @@
 <div class="Contatto">
     <h2>Aggiungi un nuovo contatto</h2>
         <div class="alert alert-danger" role="alert">
-            Non sono ancora stati aggiunti dei contatti.
+            <h3>Non sono ancora stati aggiunti dei contatti.</h3>
         </div>
         <form action="" method="post">
             <div class="mb-3">
@@ -28,5 +28,4 @@
             <button type="submit" name="Aggiorna" value="true" class="btn btn-success">Invia</button>
             <button type="reset" name="Reset" class="btn btn-danger">Cancella dati</button>
         </form>
-
 </div>
