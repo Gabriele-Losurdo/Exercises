@@ -1,4 +1,4 @@
-<div class="contatto">
+<div class="aggiungi">
   <h2>Inserisci Film</h2>
   <form method="post">
     <div class="form-group">
@@ -25,7 +25,7 @@
       <label for="Categoria"><b>Categoria</b></label>
       <input type="text" class="form-control" name="film[Categoria]">
     </div><br>
-    <button type="submit" name="invio" class="btn btn-success">Invio</button>
+    <button type="submit" name="aggiungi" class="btn btn-success">Invio</button>
     <button type="reset" class="btn btn-warning">Cancella</button>
   </form>
 </div>

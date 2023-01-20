@@ -1,0 +1,20 @@
+.ricerca,
+.contatto {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 900px;
+    padding: 20px 20px 20px 20px;
+    box-shadow: 0 0 3px;
+    border-radius: 1.5%;
+}
+
+.form-control {
+    width: fit-content;
+}
+
+/*
+.header{
+    color: white;
+    margin: 0 auto;
+}
+*/
