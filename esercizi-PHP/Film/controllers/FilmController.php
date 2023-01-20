@@ -1,17 +1,36 @@
 <?php
+
 function create(){
     $conn =  $_SESSION['conn'];
     
     $film = $_POST['film'];
-    $sql="INSERT INTO film(nome,nome_regista,descrizione,durata_f,anno_pubb,categoria) VALUES
-                ('" .$film['nome'] . "','" .
-                $film['Nome_Regista'] . "','" .
-                $film['Descrizione'] . "','".
-                $film['Durata_Film'] ."','".
-                $film['Anno_Pubblicazione'] . "','".
-                $film['Categoria'] . "');";
+    $sql="INSERT INTO film(nome,nome_regista,descrizione,durata_film,anno_pubblicazione,categoria) VALUES
+                (\"" .$film['nome'] . "\",\"" .
+                $film['nome_regista'] . "\",\"" .
+                $film['descrizione'] . "\",\"".
+                $film['durata_film'] ."\",\"".
+                $film['anno_pubblicazione'] . "\",\"".
+                $film['categoria'] . "\");";
+    $result=$conn->query($sql);
+    //echo $conn->error;
+}
+
+function search(){
+    $conn =  $_SESSION['conn'];
+    $nome_film_cercato = $_POST['nomeFilm'];
+    $sql="SELECT * FROM film WHERE nome LIKE \"%$nome_film_cercato%\";";
     $result=$conn->query($sql);
     echo $conn->error;
+    $_SESSION['result'] = $result;
+}
+
+function show(){
+    $conn =  $_SESSION['conn'];
+    $sql="SELECT * FROM film;";
+    $result=$conn->query($sql);
+    echo $conn->error;
+    $_SESSION['result'] = $result;
+
 }
 /*
 if($result->num_rows>0){

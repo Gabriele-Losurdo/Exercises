@@ -14,8 +14,4 @@ if(!isset($_GET['meth'])){
     }
 }
 
-if(isset($_POST['aggiungi'])){
-    $FilmController = require('controllers/FilmController.php');
-    $FilmController.create();
-}
 ?>

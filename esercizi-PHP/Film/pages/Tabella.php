@@ -1,58 +1,48 @@
+<?php
+
+  $FilmController = require('controllers/FilmController.php');
+  
+
+?>
 <div class="film">
-<table class="table table-success table-striped-columns">
-		<tr class="table-success">
-			<th><h1>Nome</h1></th>
-			<th><h1>Nome_Regista</h1></th>
-			<th><h1>Descrizione</h1></th>
-			<th><h1>Durata</h1></th>
-			<th><h1>Anno_Pubblicazione</h1></th>
-			<th><h1>Categoria</h1></th>
-		</tr>
-		<tr class="table-success">
-			<td>Google</td>
-			<td>9518</td>
-			<td>6369</td>
-			<td>01:32:50</td>
-			<td>01:32:50</td>
-			<td>01:32:50</td>
-		</tr>
-		<tr class="table-success">
-			<td>Twitter</td>
-			<td>7326</td>
-			<td>10437</td>
-			<td>00:51:22</td>
-			<td>01:32:50</td>
-			<td>01:32:50</td>
-		</tr>
-		<tr class="table-success">
-			<td>Amazon</td>
-			<td>4162</td>
-			<td>5327</td>
-			<td>00:24:34</td>
-			<td>01:32:50</td>
-	</tbody>
-			<td>LinkedIn</td>
-			<td>3654</td>
-			<td>2961</td>
-			<td>00:12:10</td>
-			<td>01:32:50</td>
-			<td>01:32:50</td>
-		</tr>
-    <tr class="table-success">
-			<td>CodePen</td>
-			<td>2002</td>
-			<td>4135</td>
-			<td>00:46:19</td>
-			<td>01:32:50</td>
-			<td>01:32:50</td>
-		</tr>
-    <tr class="table-success">
-			<td>GitHub</td>
-			<td>4623</td>
-			<td>3486</td>
-			<td>00:31:52</td>
-			<td>01:32:50</td>
-			<td>01:32:50</td>
-		</tr>
-</table>
+	<h2>Cerca un film</h2>
+	<form method="POST" class="d-flex" role="search">
+			<input class="form-control me-2" type="search" name="nomeFilm" placeholder="Search film" aria-label="Search">
+			<button class="btn btn-outline-success" name="search" ype="submit">Search</button>
+	</form>
+	<br>
+	<table class="table table-success table-striped-columns">
+			<?php 
+			if(!isset($_POST['search'])) { 
+				$FilmController.show();
+				$result = $_SESSION['result'];
+			}else{
+				$FilmController.search();
+				$result = $_SESSION['result'];
+			}
+			if($result->num_rows>0){?>
+			<tr>
+				<th>Nome</th>
+				<th>Nome Regista</th>
+				<th>Descrizione</th>
+				<th>Durata</th>
+				<th>Anno Pubblicazione</th>
+				<th>Categoria</th>
+			</tr>
+			<?php while($records=$result->fetch_assoc()){ ?>
+				<tr>
+				<td><?php echo $records['nome'] ?></td>
+				<td><?php echo $records['nome_regista'] ?></td>
+				<td><?php echo $records['descrizione'] ?></td>
+				<td><?php echo $records['durata_film'] ?></td>
+				<td><?php echo $records['anno_pubblicazione'] ?></td>
+				<td><?php echo $records['categoria'] ?></td>
+				</tr>
+			<?php } 
+			}else{ ?>
+				 <div class="alert alert-danger" role="alert">
+					Non sono ancora stati aggiunti dei film.
+				</div>
+			<?php } ?>
+	</table>
 </div>
