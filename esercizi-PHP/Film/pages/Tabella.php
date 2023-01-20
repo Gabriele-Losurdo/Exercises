@@ -1,3 +1,4 @@
+<div class="film">
 <table class="container">
 	<thead>
 		<tr>
@@ -60,3 +61,4 @@
 		</tr>
 	</tbody>
 </table>
+</div>
