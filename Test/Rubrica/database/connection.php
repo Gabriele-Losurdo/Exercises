@@ -4,7 +4,7 @@
         $servername="localhost";
         $username = "root";
         $dbname="rubrica";
-        $password = "";
+        $password = "root";
 
         global $conn;
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,6 +23,12 @@
         );";
         $conn->query($query);
         $_SESSION['conn'] = $conn;
+    }
+
+    function destroy_connection(){
+        $conn = $_SESSION['conn'];
+        $conn->close();
+        session_destroy();
     }
 
 ?>
