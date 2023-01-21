@@ -2,7 +2,6 @@
     <h2>Aggiungi un nuovo contatto</h2>
     <?php 
     $rubrica = require 'controllers/ContactController.php';
-    $rubrica.check();
     if(isset($_POST['aggiungi'])){
         $rubrica.create();
     }
@@ -17,7 +16,7 @@
                 <input type="text" class="form-control" name="contatto[cognome]" required>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Societa</span>
+                <span class="input-group-text" id="basic-addon1">Società</span>
                 <input type="text" class="form-control" name="contatto[societa]" required>
             </div>
             <div class="input-group mb-3">

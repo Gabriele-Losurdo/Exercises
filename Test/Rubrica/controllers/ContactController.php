@@ -16,18 +16,22 @@ function create(){
     $result=$conne->query($sql);
 }
 
-function check(){
+function search(){
     $conn =  $_SESSION['conn'];
-    
+    $nome_contatto_cercato = $_POST['cognomeContatto'];
+    $sql="SELECT * FROM contatti WHERE cognome LIKE \"%$nome_contatto_cercato%\";";
+    $result=$conn->query($sql);
+    echo $conn->error;
+    $_SESSION['result'] = $result;
+}
+
+function show(){
+    $conn =  $_SESSION['conn'];
     $sql="SELECT * FROM contatti;";
     $result=$conn->query($sql);
+    echo $conn->error;
+    $_SESSION['result'] = $result;
 
-    if($result->num_rows==0){ ?>
-        <div class="alert alert-danger" role="alert">
-            Non sono ancora stati aggiunti dei contatti.
-        </div>
-    <?php
-    }
 }
 
 ?>
