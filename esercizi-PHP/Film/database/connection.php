@@ -5,7 +5,7 @@
         $servername="localhost";
         $username = "root";
         $dbname="5a_cinema";
-        $password = "";
+        $password = "root";
 
         global $conn;
         $conn = new mysqli($servername, $username, $password, $dbname);

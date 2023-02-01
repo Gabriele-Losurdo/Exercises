@@ -37,6 +37,7 @@
 
     <?php include('controllers/HomeController.php') ?>
 
+    <script src="resources/js/search-event.js"></script>
 </body>
 </html>
 <?php

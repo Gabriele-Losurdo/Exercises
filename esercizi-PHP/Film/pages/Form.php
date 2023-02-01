@@ -2,8 +2,8 @@
   <h2>Inserisci Film</h2>
   <form method="post">
     <div class="form-group">
-      <label for="Nome"><b>Nome</b></label>
-      <input type="name" class="form-control" name="film[nome]">
+      <label for="Titolo"><b>Titolo</b></label>
+      <input type="name" class="form-control" name="film[titolo]">
     </div>
     <div class="form-group">
       <label for="Nome_Regista"><b>Nome_Regista</b></label>
@@ -22,8 +22,8 @@
       <input type="date" class="form-control" name="film[anno_pubblicazione]">
     </div>
     <div class="form-group">
-      <label for="Categoria"><b>Categoria</b></label>
-      <input type="text" class="form-control" name="film[categoria]">
+      <label for="Genere"><b>Genere</b></label>
+      <input type="text" class="form-control" name="film[genere]">
     </div><br>
     <button type="submit" name="aggiungi" class="btn btn-success">Invio</button>
     <button type="reset" class="btn btn-warning">Cancella</button>
