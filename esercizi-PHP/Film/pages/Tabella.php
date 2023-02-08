@@ -5,27 +5,38 @@
 
 ?>
 <div class="film">
-	<h2>Cerca un film per 
-	<select class="form-select" style="width: auto;" id="type" aria-label="Default select example">
-		<option value="titolo" selected>Titolo</option>
-		<option value="genere">Genere</option>
-		<option value="nome_regista">Nome del regista</option>
-		<option value="anno_pubblicazione">Anno di pubblicazione</option>
-	</select></h2>
+	<h2>Cerca un film per </h2>
 	<div class="search">
 		<form method="POST" class="d-flex" role="search">
-				<input class="form-control me-2" type="search" name="attFilm" placeholder="Search film" aria-label="Search">
-				<button class="btn btn-outline-success" id="attType" name="searchBy" value="titolo" type="submit">Cerca</button>
+
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="searchBy" value="titolo" id="flexRadioDefault1">
+			<label class="form-check-label" for="flexRadioDefault1">
+				Titolo
+			</label>
+
+			<input class="form-check-input" type="radio" name="searchBy" value="nome_regista" id="flexRadioDefault1">
+			<label class="form-check-label" for="flexRadioDefault1">
+				Nome regista
+			</label>
+
+			<input class="form-check-input" type="radio" name="searchBy" value="anno_pubblicazione" id="flexRadioDefault1">
+			<label class="form-check-label" for="flexRadioDefault1">
+				Anno
+			</label>
+		</div>
+			<input class="form-control me-2" type="search" name="attFilm" placeholder="Search film" aria-label="Search">
+			<button class="btn btn-outline-success" id="attType" name="search" type="submit">Cerca</button>
 		</form>
 	</div>
 	<br>
 	<table class="table table-success table-striped-columns">
 			<?php 
-			if(!isset($_POST['searchBy'])) { 
+			if(!isset($_POST['search'])) { 
 				$FilmController.show();
 				$result = $_SESSION['result'];
 			}else{
-				$FilmController.typeOfSearch($_POST['attFilm'],$_POST['searchBy']);
+				$FilmController.typeOfSearch($_POST['searchBy'],$_POST['attFilm']);
 				$result = $_SESSION['result'];
 			}
 			if($result->num_rows>0){?>

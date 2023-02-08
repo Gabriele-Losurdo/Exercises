@@ -17,8 +17,7 @@ function create(){
 
 function search($field, $attFilm){
     $conn =  $_SESSION['conn'];
-    $valore = $attFilm;
-    $sql="SELECT * FROM film WHERE $field LIKE \"%$valore%\";";
+    $sql="SELECT * FROM film WHERE $field LIKE \"%$attFilm%\";";
     $result=$conn->query($sql);
     echo $conn->error;
     $_SESSION['result'] = $result;

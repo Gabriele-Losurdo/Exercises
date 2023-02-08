@@ -3,9 +3,9 @@
     function init_connection(){
         session_start();
         $servername="localhost";
-        $username = "root";
+        $username = "5a";
         $dbname="5a_cinema";
-        $password = "root";
+        $password = "dbA1dmin5";
 
         global $conn;
         $conn = new mysqli($servername, $username, $password, $dbname);
