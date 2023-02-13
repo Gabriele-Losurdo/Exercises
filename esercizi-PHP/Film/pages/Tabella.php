@@ -34,8 +34,8 @@ $result = $_SESSION['result'];
 
 		<?php
 		if($genreList->num_rows>0){?>
-		<select class="form-select" name="genere" style="margin-left:20px;margin-right:20px;"aria-label="Default select example" required>
-			<option selected>Scegli una categoria</option>
+		<select class="form-select" name="genere" style="margin-left:20px;margin-right:20px;"aria-label="Default select example">
+			<option value="" selected>Scegli una categoria</option>
 			
 			<?php while($records=$genreList->fetch_assoc()){ ?>
 				<option value="<?php echo $records['genere'] ?>"><?php echo $records['genere'] ?></option>
