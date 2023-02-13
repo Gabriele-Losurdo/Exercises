@@ -15,9 +15,9 @@ function create(){
     //echo $conn->error;
 }
 
-function search($field, $attFilm){
+function search($field, $attFilm_1,$attFilm_2){
     $conn =  $_SESSION['conn'];
-    $sql="SELECT * FROM film WHERE $field LIKE \"%$attFilm%\";";
+    $sql="SELECT * FROM film WHERE $field LIKE \"%$attFilm_1%\" AND genere LIKE \"%$attFilm_2%\";";
     $result=$conn->query($sql);
     echo $conn->error;
     $_SESSION['result'] = $result;
@@ -32,20 +32,12 @@ function show(){
 
 }
 
-function typeOfSearch($attFilm,$searchBy){
-    switch ($searchBy){
-        case 'titolo':
-            search('titolo',$attFilm);
-            break;
-        case 'nome_regista':
-            search('nome_regista',$attFilm);
-            break;
-        case 'genere':
-            search('genere',$attFilm);
-            break;
-        case 'anno_pubblicazione':
-            search('anno_pubblicazione',$attFilm);
-            break;
-    }
+function genreList(){
+    $conn =  $_SESSION['conn'];
+    $sql="SELECT DISTINCT genere FROM film;";
+    $result=$conn->query($sql);
+    echo $conn->error;
+    $_SESSION['genreList'] = $result;
 }
+
 ?>
