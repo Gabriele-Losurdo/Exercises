@@ -1,6 +1,6 @@
 <?php
 
-    function init_connection(){
+    function init_connection(){ // inizializzazione connessione
         session_start();
         $servername="localhost";
         $username = "root";
@@ -14,16 +14,16 @@
         
     }
 
-    function destroy_connection(){
+    function destroy_connection(){ // chiusura connessione
         $conn = $_SESSION['conn'];
         $conn->close();
         session_destroy();
     }
 
 /*
-$servername="localhost";
-$username = "5a";
-$dbname="5a_cinema";
-$password = "dbA1dmin5";
+altre credenziali
+"5a"
+"5a_cinema"
+"dbA1dmin5"
 */
 ?>

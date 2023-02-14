@@ -1,15 +1,18 @@
 <?php
 
 $FilmController = require('controllers/FilmController.php');
-$FilmController.genreList();
-if(!isset($_POST['search'])) { 
-	$FilmController.show();
-}else{
+$FilmController.genreList(); // mi ricavo la lista dei generi dei film
+
+if(!isset($_POST['search'])) { // se non ho cercato nessun film allora eseguirà la funzione show
+	$FilmController.show(); 
+}else{ // altrimenti eseguira la funzione search: Il valore del primo attributo corrisponde al nome del campo sul quale decidiamo di effettuare la ricerca
+	   // il valore del secondo attributo invece sarà il valore che noi vogliamo cercare all interno dei record nella colonna definita nel primo attributo
+	   // il valore del terzo attributo corrisponde alla casella cliccata nella <select>
 	$FilmController.search($_POST['searchBy'],$_POST['attFilm'],$_POST['genere']);
 }
-$genreList = $_SESSION['genreList'];
+$genreList = $_SESSION['genreList']; // mi recupero la lista dei generi
 
-$result = $_SESSION['result'];
+$result = $_SESSION['result'];// mi recupero  il risultato della query ( che potrebbe essere della funzione show o della funzione search)
 
 ?>
 <div class="film">
@@ -37,7 +40,7 @@ $result = $_SESSION['result'];
 		<select class="form-select" name="genere" style="margin-left:20px;margin-right:20px;"aria-label="Default select example">
 			<option value="" selected>Scegli una categoria</option>
 			
-			<?php while($records=$genreList->fetch_assoc()){ ?>
+			<?php while($records=$genreList->fetch_assoc()){ // stampo tutti i generi ?>
 				<option value="<?php echo $records['genere'] ?>"><?php echo $records['genere'] ?></option>
 			<?php } 
 		} ?>
@@ -58,7 +61,7 @@ $result = $_SESSION['result'];
 				<th>Anno Pubblicazione</th>
 				<th>Genere</th>
 			</tr>
-			<?php while($records=$result->fetch_assoc()){ ?>
+			<?php while($records=$result->fetch_assoc()){ // stampo i film che ho cercato oppure tutti i film se non ho effettuato la ricerca ?>
 				<tr>
 				<td><?php echo $records['titolo'] ?></td>
 				<td><?php echo $records['nome_regista'] ?></td>
@@ -68,7 +71,7 @@ $result = $_SESSION['result'];
 				<td><?php echo $records['genere'] ?></td>
 				</tr>
 			<?php } 
-			}else{ ?>
+			}else{ // se non trova film verrà mostrato questo messaggio di avviso ?>
 				 <div class="alert alert-danger" role="alert">
 					Non sono stati trovati dei film.
 				</div>

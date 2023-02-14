@@ -1,6 +1,6 @@
 <?php
 
-function create(){
+function create(){ // Aggiungo nel database un nuovo record
     $conn =  $_SESSION['conn'];
     
     $film = $_POST['film'];
@@ -15,7 +15,14 @@ function create(){
     //echo $conn->error;
 }
 
-function search($field, $attFilm_1,$attFilm_2){
+
+/*
+search
+
+Effettuo una select con una variabile il cui valore sarà dinamico e corrisponderà a un campo della tabella film
+in base alla checkbox selezionata mentre sarà default il campo genere
+*/
+function search($field, $attFilm_1,$attFilm_2){ 
     $conn =  $_SESSION['conn'];
     $sql="SELECT * FROM film WHERE $field LIKE \"%$attFilm_1%\" AND genere LIKE \"%$attFilm_2%\";";
     $result=$conn->query($sql);
@@ -23,6 +30,11 @@ function search($field, $attFilm_1,$attFilm_2){
     $_SESSION['result'] = $result;
 }
 
+/*
+show
+
+effettuo una select per recuperare e poi mostrare nella tabella tutti i film inseriti
+*/
 function show(){
     $conn =  $_SESSION['conn'];
     $sql="SELECT * FROM film;";
@@ -32,6 +44,12 @@ function show(){
 
 }
 
+/*
+genereList
+
+effettuo una select per recuperare e poi mostrare in una <select> tutte le categorie inserite tranne gli eventuali doppioni
+grazie a DISTINCT
+*/
 function genreList(){
     $conn =  $_SESSION['conn'];
     $sql="SELECT DISTINCT genere FROM film;";

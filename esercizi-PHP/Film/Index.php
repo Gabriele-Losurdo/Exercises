@@ -1,6 +1,6 @@
 <?php 
     $connection = require 'database/connection.php';
-    $connection.init_connection();
+    $connection.init_connection(); // inizializzo la connessione
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,5 +43,5 @@
 </body>
 </html>
 <?php
-$connection.destroy_connection();
+$connection.destroy_connection(); // chiudo la connessione
 ?>

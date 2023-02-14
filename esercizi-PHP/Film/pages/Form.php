@@ -31,7 +31,7 @@
 </div>
 <?php
 
-if(isset($_POST['aggiungi'])){
+if(isset($_POST['aggiungi'])){ // una volta spinto il bottone invio richiamo la funzione create che mi aggiungerà nella tabella film del database un nuovo record
   $FilmController = require('controllers/FilmController.php');
   $FilmController.create();
 }
