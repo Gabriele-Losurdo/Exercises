@@ -8,11 +8,11 @@
     $conn = new mysqli($servername, $username, $password, $dbname);
     if(isset($_POST['search'])){
         $cognome = $_POST['cognomeArtista'];
-        $sql = "SELECT artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
-        JOIN artisti ON quadri.id_artista=artisti.ID_Artista WHERE cognome LIKE '%$cognome%';";
+        $sql = "SELECT tecniche.tecnica,artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
+        JOIN artisti ON quadri.id_artista=artisti.ID_Artista JOIN tecniche ON tecniche.ID_tecnica=quadri.id_tecnica WHERE cognome LIKE '%$cognome%';";
     }else{
-        $sql = "SELECT artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
-        JOIN artisti ON quadri.id_artista=artisti.ID_Artista;";
+        $sql = "SELECT tecniche.tecnica,artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
+        JOIN artisti ON quadri.id_artista=artisti.ID_Artista JOIN tecniche ON tecniche.ID_tecnica=quadri.id_tecnica;";
     }
     $quadri = $conn->query($sql);
     $conn->close();
@@ -33,6 +33,7 @@
               <th>Altezza</th>
               <th>Larghezza</th>
               <th>Prezzo</th>
+              <th>Tecnica</th>
               <th>Immagine</th>
               <th>Dettagli</th>
           </tr>
@@ -43,6 +44,7 @@
               <td><?php echo $records['altezza'] ?></td>
               <td><?php echo $records['larghezza'] ?></td>
               <td><?php echo $records['prezzo'] ?></td>
+              <td><?php echo $records['tecnica'] ?></td>
               <td><?php echo $records['immagine'] ?></td>
               <td><a href="index.php?detail=true&id_quadro=<?php echo $records['ID_quadro'] ?>">Guarda di più</a></td>
               </tr>
