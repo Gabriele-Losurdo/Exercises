@@ -11,7 +11,7 @@
 
     $articolo_venduto = $conn->query("SELECT vendite.*,dipendenti.cognome as cognome_dipendente,dipendenti.nome as nome_dipendente,
                                       articoli.codice_articolo, articoli.prezzo_listino,
-                                      (articoli.prezzo_listino - vendite.prezzo * vendite.quantita) AS differenza_prezzo
+                                      (articoli.prezzo_listino - vendite.prezzo) AS differenza_prezzo
                                       FROM vendite 
                                       JOIN articoli ON articoli.codice_articolo=vendite.codice_articolo
                                       JOIN dipendenti ON dipendenti.id_dipendente=vendite.id_dipendente
@@ -36,12 +36,16 @@
         <input type="text" class="form-control" value="<?php echo $articolo_venduto['prezzo_listino'] ?>" readonly>
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Prezzo comprato</span>
+        <span class="input-group-text" id="basic-addon1">Prezzo Unitario Venduto</span>
+        <input type="text" class="form-control" value="<?php echo $articolo_venduto['prezzo'] ?>" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Prezzo complessivo (prezzo * quantita) </span>
         <input type="text" class="form-control" value="<?php echo $articolo_venduto['prezzo'] * $articolo_venduto['quantita'] ?>" readonly>
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Differenza Prezzo</span>
-        <input type="text" class="form-control" value="<?php echo $articolo_venduto['differenza_prezzo'] ?>" readonly>
+        <span class="input-group-text" id="basic-addon1">Differenza Prezzo (%) </span>
+        <input type="text" class="form-control" value="<?php echo 100*$articolo_venduto['prezzo']/$articolo_venduto['prezzo_listino']  ?>" readonly>
     </div>
     <a href="index.php" class="btn btn-primary">Torna alla home</a>
 </div>
