@@ -15,7 +15,7 @@
         JOIN artisti ON quadri.id_artista=artisti.ID_Artista JOIN tecniche ON tecniche.ID_tecnica=quadri.id_tecnica;";
     }
     $quadri = $conn->query($sql);
-    $conn->close();
+    
     ?>
     <div class="catalogo">
     <h3>Catalogo</h3>
@@ -56,3 +56,4 @@
           <?php } ?>
     </table>
     </div>
+    <?php $conn->close() ?>

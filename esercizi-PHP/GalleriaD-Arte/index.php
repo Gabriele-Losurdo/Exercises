@@ -20,6 +20,9 @@
 				<li class="nav-item">
                     <a class="nav-link active" href="index.php">Elenco Quadri</a>
                 </li>
+				<li class="nav-item">
+                    <a class="nav-link active" href="index.php?add_quadro=true">Aggiungi quadro</a>
+                </li>
             </ul>
             </div>
         </div>
@@ -29,7 +32,11 @@
     if(isset($_GET['detail'])){
         include('detail.php');
     }else{
-        include('elenco_quadri.php'); 
+        if(isset($_GET['add_quadro'])){
+            include('aggiungi_quadro.php');
+        }else{
+            include('elenco_quadri.php'); 
+        }
     }
     
     ?>
