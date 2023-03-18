@@ -6,14 +6,12 @@
 
     global $conn;
     $conn = new mysqli($servername, $username, $password, $dbname);
+    $cognome = '';
     if(isset($_POST['search'])){
         $cognome = $_POST['cognomeArtista'];
-        $sql = "SELECT tecniche.tecnica,artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
-        JOIN artisti ON quadri.id_artista=artisti.ID_Artista JOIN tecniche ON tecniche.ID_tecnica=quadri.id_tecnica WHERE cognome LIKE '%$cognome%';";
-    }else{
-        $sql = "SELECT tecniche.tecnica,artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
-        JOIN artisti ON quadri.id_artista=artisti.ID_Artista JOIN tecniche ON tecniche.ID_tecnica=quadri.id_tecnica;";
     }
+    $sql = "SELECT tecniche.tecnica,artisti.cognome AS cognome,quadri.ID_quadro,quadri.titolo,quadri.prezzo,quadri.altezza,quadri.larghezza,quadri.immagine FROM quadri
+    JOIN artisti ON quadri.id_artista=artisti.ID_Artista JOIN tecniche ON tecniche.ID_tecnica=quadri.id_tecnica WHERE cognome LIKE '%$cognome%';";
     $quadri = $conn->query($sql);
     
     ?>
