@@ -46,7 +46,7 @@
               <td><?php echo $records['prezzo'] ?></td>
               <td><?php echo $records['tecnica'] ?></td>
               <td><?php echo $records['immagine'] ?></td>
-              <td><a href="index.php?detail=true&id_quadro=<?php echo $records['ID_quadro'] ?>">Guarda di più</a></td>
+              <td><a href="index.php?detail=true&id_quadro=<?php echo $records['ID_quadro'] ?>" class="btn btn-info">Guarda di più</a></td>
               </tr>
           <?php } 
           }else{ ?>

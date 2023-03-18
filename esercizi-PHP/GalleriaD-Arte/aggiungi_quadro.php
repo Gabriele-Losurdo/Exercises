@@ -13,22 +13,25 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 if(isset($_POST['aggiungi'])){
     $quadro = $_POST['quadro'];
+    $quadro['titolo'] = mysqli_real_escape_string($conn, $quadro['titolo']);
+    $quadro['img'] = mysqli_real_escape_string($conn, $quadro['img']);
     $sql = "INSERT INTO quadri (id_artista, id_tecnica, titolo, altezza, larghezza, prezzo, immagine) VALUES
     (". $quadro['artista'].",".$quadro['tecnica'].",'".$quadro['titolo']."',".$quadro['altezza'].",".$quadro['larghezza'].",".$quadro['prezzo'].",'".$quadro['img']."');";
-    if($nuovo_quadro = $conn->query($sql))
+    try
     {
+        $nuovo_quadro = $conn->query($sql);
         $sql = "SELECT * FROM quadri ORDER BY ID_quadro DESC LIMIT 1;";
         $quadro = ($conn->query($sql))->fetch_assoc();
         ?>
 
         <div class="alert alert-success">
             Il quadro è stato aggiunto con successo!
-            <a href="index.php?detail=true&id_quadro=<?php echo $quadro['ID_quadro'] ?>" class="btn btn-primary"> Dettagli</a>
+            <a href="index.php?detail=true&id_quadro=<?php echo $quadro['ID_quadro'] ?>" class="btn btn-info"> Dettagli</a>
         </div>
 
         <?php
     }
-    else
+    catch (mysqli_sql_exception $e)
     {
         ?>
 
