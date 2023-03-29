@@ -1,5 +1,0 @@
-<?php
-
-// just a gap
-
-?>
