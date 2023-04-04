@@ -1,0 +1,22 @@
+CREATE TABLE artisti(
+    IDArtista INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Denominazione VARCHAR(50) NOT NULL,
+    Nazionalita VARCHAR(50) NOT NULL,
+    Attivo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE generi(
+    IDGenerE INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Denominazione VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE album(
+    IDAlbum INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    IDGenere INT NOT NULL,
+    IDArtista INT NOT NULL,
+    Titolo VARCHAR(50) NOT NULL,
+    Durata INT NOT NULL,
+    URL_Immagine VARCHAR(50) NOT NULL,
+    FOREIGN KEY(IDGenere) REFERENCES generi(IDGenere),
+    FOREIGN KEY(IDArtista) REFERENCES artisti(IDArtista)
+);
